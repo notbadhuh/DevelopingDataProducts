@@ -1,7 +1,6 @@
 shinyServer(function(input, output) {
      library(ggplot2)
      output$payment <- renderText({
-          #input$calculate
           payment <- format(round((input$r/(12*100)*input$P)/(1-(1+input$r/(12*100))^(-input$n*12)),2), nsmall=2)
           paste("Your monthly payments will be $", payment, ".", sep="")
      })
