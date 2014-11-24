@@ -21,7 +21,7 @@ shinyUI(pageWithSidebar(
           br(),
           br(),
           h3('How To Use This App'),
-          p("To use this app, just enter your loan information.  This include the loan principle (the amount you've borrowed), the interest rate given as the APR, and the length of the loan in years (how long you are borrowing for).  Then hit calculate.  It's as simple as that!"),
+          p("To use this app, just enter your loan information.  This includes the loan principle (the amount you've borrowed), the interest rate given as the APR, and the length of the loan in years (how long you are borrowing for).  Then hit calculate.  It's as simple as that!"),
           br(),
           a('Github Repository',href='https://github.com/notbadhuh/DevelopingDataProducts')
      ),
