@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Loan Payment Calculator</title>
+  <meta name="description" content="">
+  <meta name="author" content="Brandon">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  <h1>Loan Payment Calculator</h1>
+  <h2>Calculating Monthly Payments and Looking at the Effect of Extra Payments</h2>
+
+<h3>Brandon</h3>
+
+<h3>November 23, 2014</h3>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h2>What is it?</h2>
+  <ul>
+<li>A monthly payment calculator for loans</li>
+<li>A means to see how much you&#39;ll pay in interest over the course of your loan</li>
+<li>A visual tool to illustrate the importance of making extra payments on your loan</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h2>What does it specifically do?</h2>
+  <ul>
+<li>Enter you loan information
+
+<ul>
+<li>Principle</li>
+<li>Interest rate (APR)</li>
+<li>Length of loan (years)</li>
+</ul></li>
+<li>Hit &quot;Calculate&quot;</li>
+<li>Get back relevant information
+
+<ul>
+<li>Monthly loan payment</li>
+<li>Total interest paid over the course of the loan</li>
+<li>A plot showing how making extra payments reduces the time you pay on the loan</li>
+</ul></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h2>Why is it necessary?</h2>
+  <ul>
+<li>Help consumers make more informed financial decisions</li>
+<li>Easily illustrate the effects of making extra payments on your loan</li>
+<li>Determine estimated monthly payments on your loan</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h2>How does it do it?</h2>
+  <ul>
+<li>Use <a href="http://www.financeformulas.net/Loan_Payment_Formula.html">a finacial formula</a> to calculate the estimated monthly payment.</li>
+<li>Calculate the number of payments made over the course of the loan.</li>
+<li>Subtract the principle from the total amount paid to get the total interest paid.</li>
+<li>Calculate the time taken to pay off the loan when making various extra payments.</li>
+<li>Plot the time taken to pay off the loan vs. the extra payment.</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-6'>
+  <h2>A sample of the code</h2>
+  <p>Calculate the monthly payment:</p>
+
+<pre><code class="r">P &lt;- 60000; r &lt;- 6.5; n &lt;- 10
+payment &lt;- format(round((r/(12*100)*P)/(1-(1+r/(12*100))^(-n*12)),2), nsmall=2)
+print(paste(&quot;Your monthly payments will be $&quot;, payment, &quot;.&quot;, sep=&quot;&quot;))
+</code></pre>
+
+<pre><code>## [1] &quot;Your monthly payments will be $681.29.&quot;
+</code></pre>
+
+<p>Calculate the total interest paid over the course of the loan:</p>
+
+<pre><code class="r">P &lt;- 60000; r &lt;- 6.5; n &lt;- 10
+payment &lt;- round((r/(12*100)*P)/(1-(1+r/(12*100))^(-n*12)),2)
+totalInterestPaid &lt;- format(round(payment*(n*12)-P,2), nsmall=2)
+print(paste(&quot;If you make the normal payments (i.e. you pay no extra), the total interest paid on the loan will be $&quot;, totalInterestPaid, &quot;.&quot;, sep=&quot;&quot;))
+</code></pre>
+
+<pre><code>## [1] &quot;If you make the normal payments (i.e. you pay no extra), the total interest paid on the loan will be $21754.80.&quot;
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-7'>
+  <h2>Where do we go from here?</h2>
+  <ul>
+<li>Get more publicity for the app</li>
+<li>Use this as a jumping off point for a discussion of financial literacy</li>
+</ul>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'default', 
+    transition: Reveal.getQueryHash().transition || 'default', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
